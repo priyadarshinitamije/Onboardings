@@ -25,7 +25,7 @@ export default class ProductUpdate extends Component {
                     <Modal.Content>
                         <Form>
                             <Form.Field>
-                                <label>Customer</label>
+                                <label>Name</label>
                                 <input type="text" name="ProductName" placeholder='Name' defaultValue={this.props.Name} onChange={this.props.onChange} />
                                 <div style={{ color: 'red' }}>
                                     {this.props.errors.ProductName}
