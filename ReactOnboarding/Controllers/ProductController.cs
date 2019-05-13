@@ -29,12 +29,7 @@ namespace ReactOnboarding.Controllers
                 }).ToList();
 
                 return Json(productList, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Data Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
+            
         }
 
         // DELETE Product
