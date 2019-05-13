@@ -8,15 +8,12 @@ export default class StoreCreate extends Component {
         this.state = {
             Success: { Data: '' },
             StoreName: '',
-            StoreAddress: '',
-
             Success: [],
             errors: {}
         };
 
         this.onCreateSubmit = this.onCreateSubmit.bind(this);
-        this.onClose = this.onClose.bind(this);
-        this.onChange = this.onChange.bind(this);
+     
     }
 
     validateForm() {
@@ -28,22 +25,13 @@ export default class StoreCreate extends Component {
             formIsValid = false;
             errors['StoreName'] = '*Please enter the Store Name.';
         }
-
-        if (typeof this.state.StoreName !== "undefined") {
-            if (!this.state.StoreName.match(/^[a-zA-Z ]*$/)) {
-                formIsValid = false;
-                errors["StoreName"] = "*Please enter alphabet characters only.";
-            }
-        }
-
-        if (!this.state.StoreAddress) {
+            if (!this.state.StoreAddress) {
             formIsValid = false;
             errors['StoreAddress'] = '*Please enter the Store Address'
         }
 
         this.setState({
-            errors: errors
-        });
+           });
         return formIsValid
     }
 
@@ -78,12 +66,10 @@ export default class StoreCreate extends Component {
         return (
             <React.Fragment>
                 <Modal open={this.props.showCreateModel} onClose={this.props.onClose} size={'small'}>
-                    <Modal.Header> Create Store </Modal.Header>
                     <Modal.Content>
                         <Form>
                             <Form.Field>
-                                <label>Store Name</label>
-                                <input type="text" name="StoreName" placeholder='Name' onChange={this.onChange} />
+                            <input type="text" name="StoreName" placeholder='Name' onChange={this.onChange} />
                                 <div style={{ color: 'red' }}>
                                     {this.state.errors.StoreName}
                                 </div>
@@ -98,9 +84,7 @@ export default class StoreCreate extends Component {
                         </Form>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button onClick={this.props.onClose} secondary >Cancel
-                        </Button>
-                        <Button onClick={this.onCreateSubmit} className="ui green button">Create
+                    <Button onClick={this.onCreateSubmit} className="ui green button">Create
                         <i className="check icon"></i>
                         </Button>
                     </Modal.Actions>
