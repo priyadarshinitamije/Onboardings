@@ -10,16 +10,16 @@ namespace ReactOnboarding.Models
     public class CustomerModel
     {
         [Key]
-        public int CustomersId { get; set; }
+        public int CustomerId { get; set; }
 
-        [DisplayName("Customers Name")]
-        [Required(ErrorMessage = "Customers Name is Required")]
-        [StringLength(40, MinimumLength = 3)]
-        public string CustomersName { get; set; }
+        [DisplayName("Customer Name")]
+        [Required(ErrorMessage = "Customer Name is Required")]
+        [StringLength(20, MinimumLength = 2)]
+        public string CustomerName { get; set; }
 
-        [Required(ErrorMessage = "Customers Address is required")]
-        [StringLength(85)]
-        public string CustomersAddress { get; set; }
+        [Required(ErrorMessage = "Customer Address is required")]
+        [StringLength(70)]
+        public string CustomerAddress { get; set; }
 
         public ICollection<ProductSold> Sales { get; set; }
     }
