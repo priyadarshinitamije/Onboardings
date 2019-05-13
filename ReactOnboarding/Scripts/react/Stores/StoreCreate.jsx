@@ -48,6 +48,15 @@ export default class StoreCreate extends Component {
         e.preventDefault();
         if (this.validateForm()) {
             let data = { 'Name': this.state.StoreName, 'Address': this.state.StoreAddress };
+              $.ajax({
+                url: "/Store/CreateStore",
+                type: "POST",
+                data: data,
+                success: function (data) {
+                    this.setState({ Success: data })
+                    window.location.reload()
+                }.bind(this)
+            });
         }
     }
 
