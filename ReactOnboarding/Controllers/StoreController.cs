@@ -24,9 +24,9 @@ namespace ReactOnboarding.Controllers
             {
                 var storeList = db.Stores.Select(x => new StoreModel
                 {
-                    StoreId = x.Id,
-                    StoreName = x.Name,
-                    StoreAddress = x.Address,
+                    Id = x.Id,
+                    Name = x.Name,
+                    Address = x.Address,
                 }).ToList();
 
                 return Json(storeList, JsonRequestBehavior.AllowGet);
@@ -39,14 +39,13 @@ namespace ReactOnboarding.Controllers
         }
 
         // CREATE Store
-        public JsonResult CreateStore(Store store)
-        {
+       
             try
             {
                 db.Stores.Add(store);
                 db.SaveChanges();
             }
-            catch (Exception e)
+           
             {
                 Console.Write(e.Data + "Exception Occured");
                 return new JsonResult { Data = "Store Create Failed", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
@@ -58,9 +57,8 @@ namespace ReactOnboarding.Controllers
         public JsonResult DeleteStore(int id)
         {
             try
-            {
-                var store = db.Stores.Where(p => p.Id == id).SingleOrDefault();
-                if (store != null)
+            
+               
                 {
                     db.Stores.Remove(store);
                     db.SaveChanges();
@@ -80,7 +78,7 @@ namespace ReactOnboarding.Controllers
             try
             {
                 Store store = db.Stores.Where(x => x.Id == id).SingleOrDefault();
-                string value = JsonConvert.SerializeObject(store, Formatting.Indented, new JsonSerializerSettings
+                
                 {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                 });
@@ -88,8 +86,8 @@ namespace ReactOnboarding.Controllers
             }
             catch (Exception e)
             {
-                Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Store Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+               
+                return new JsonResult { Data = "Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
@@ -99,7 +97,6 @@ namespace ReactOnboarding.Controllers
             {
                 Store sto = db.Stores.Where(p => p.Id == store.Id).SingleOrDefault();
                 sto.Name = store.Name;
-                sto.Address = store.Address;
                 db.SaveChanges();
             }
             catch (Exception e)
