@@ -16,5 +16,16 @@ namespace ReactOnboarding.Models
 
         [Required(ErrorMessage = "Customer id is required")]
         public int CustomerId { get; set; }
+
+        [Required(ErrorMessage = "Store id is required")]
+        public int StoreId { get; set; }
+
+        [Required(ErrorMessage = "Sale date is required")]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DateSold { get; set; }
+
+        public Customer Customer { get; set; }
+        public Product Product { get; set; }
+        public Store Store { get; set; }
     }
 }
