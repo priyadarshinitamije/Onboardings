@@ -18,6 +18,8 @@ namespace ReactOnboarding.Models
         public int ProductId { get; set; }
         public int CustomerId { get; set; }
         public int StoreId { get; set; }
+        public System.DateTime DateSold { get; set; }
+        
         
         public virtual Customer Customer { get; set; }
         public virtual Product Product { get; set; }
