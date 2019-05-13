@@ -179,30 +179,7 @@ class Table extends Component {
             )
 
         }
-        return (
-            <React.Fragment>
-                <div>
-                    <div><Button primary onClick={this.showCreateModel}>New Customer</Button></div>
-                    <CustomerCreate onChange={this.onChange} onClose={this.closeCreateModel} onCreateSubmit={this.onCreateSubmit} showCreateModel={this.state.showCreateModel} />
-                </div>
-                <div>
-                    <CustomerDelete delete={this.state.deleteId} onClose={this.closeDeleteModal} onDeleteSubmit={this.onDeleteSubmit} showDeleteModal={this.state.showDeleteModal} />
-                    <CustomerUpdate onChange={this.onChange} update={this.state.updateId} onClose={this.closeUpdateModel} onUpdateSubmit={this.onUpdateSubmit} showUpdateModel={this.state.showUpdateModel} Id={this.state.CustomerId} Name={this.state.CustomerName} Address={this.state.CustomerAddress} errors={this.state.errors} />
-                    <table className="ui striped table">
-                        <thead>
-                            <tr>
-                                <th className="four wide">Name</th>
-                                <th className="four wide">Address</th>
-                                <th className="four wide">Actions</th>
-                                <th className="four wide">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tableData}
-                        </tbody>
-                    </table>
-                </div>
-            </React.Fragment>
+        
         )
     }
 
