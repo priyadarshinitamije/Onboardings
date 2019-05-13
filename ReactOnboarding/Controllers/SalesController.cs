@@ -11,6 +11,7 @@ namespace ReactOnboarding.Controllers
     public class SalesController : Controller
     {
         DemoProject db = new DemoProject();
+        
         public ActionResult Index()
         {
             return View();
