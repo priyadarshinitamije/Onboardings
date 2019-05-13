@@ -17,88 +17,52 @@ public class SalesController : Controller
         }
 
         // GET Products
-        public JsonResult GetSalesList()
+        public JsonResult GetCustomerList()
         {
             try
             {
-                var salesList = db.ProductSolds.Select(x => new
+                var customerList = db.Customers.Select(x => new CustomerModel
                 {
-                    Id = x.Id,
-                    DateSold = x.DateSold,
-                    CustomerName = x.Customer.Name,
-                    
+                    CustomerId = x.Id,
+                    CustomerName = x.Name,
+                    CustomerAddress = x.Address,
                 }).ToList();
-                var asdf = Json(salesList, JsonRequestBehavior.AllowGet);
-                return asdf;
+
+                return Json(customerList, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
                 Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult { Data = "Data Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
-        // CREATE Sale
-        public JsonResult CreateSale(ProductSold sale)
+        // CREATE Product
+        public JsonResult CreateCustomer(Customer customer)
         {
             try
             {
-                db.ProductSolds.Add(sale);
+                db.Customers.Add(customer);
                 db.SaveChanges();
+                Console.Write("Success");
             }
             catch (Exception e)
             {
                 Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Sale Create Failed", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult { Data = "Customer Create Failed", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-            
+            return new JsonResult { Data = "Success", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-        public JsonResult GetCustomers()
-        {
-            
-            catch (Exception e)
-            {
-                Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Data Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
-        }
-
-        public JsonResult GetProducts()
+        // DELETE Product
+        public JsonResult DeleteCustomer(int id)
         {
             try
             {
-                var ProductsData = db.Products.Select(p => new { Id = p.Id, ProductName = p.Name }).ToList();
-
-                return new JsonResult { Data = ProductsData, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
-            
-        }
-
-        public JsonResult GetStores()
-        {
-            try
-            {
-                var StoresData = db.Stores.Select(p => new { Id = p.Id, StoreName = p.Name }).ToList();
-
-                return new JsonResult { Data = StoresData, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
-           
-            {
-                Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Data Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
-        }
-
-        // DELETE Sale
-        public JsonResult DeleteSale(int id)
-        {
-            try
-            {
-                var sale = db.ProductSolds.Where(s => s.Id == id).SingleOrDefault();
-               
+                var customer = db.Customers.Where(p => p.Id == id).SingleOrDefault();
+                if (customer != null)
                 {
-                    db.ProductSolds.Remove(sale);
+                    db.Customers.Remove(customer);
                     db.SaveChanges();
                 }
             }
@@ -110,39 +74,40 @@ public class SalesController : Controller
             return new JsonResult { Data = "Success", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-        public JsonResult GetUpdateSale(int id)
+        // UPDATE Product
+        public JsonResult GetUpdateCustomer(int id)
         {
             try
             {
-                
-                string value = JsonConvert.SerializeObject(sale, Formatting.Indented, new JsonSerializerSettings
+                Customer customer = db.Customers.Where(x => x.Id == id).SingleOrDefault();
+                string value = JsonConvert.SerializeObject(customer, Formatting.Indented, new JsonSerializerSettings
                 {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                 });
                 return Json(value, JsonRequestBehavior.AllowGet);
-                //return new JsonResult { Data = sale, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
             catch (Exception e)
             {
                 Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult { Data = "Customer Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
-        public JsonResult UpdateSale(ProductSold sale)
+        public JsonResult UpdateCustomer(Customer customer)
         {
             try
             {
-                ProductSold sa = db.ProductSolds.Where(s => s.Id == sale.Id).SingleOrDefault();
-                sa.CustomerId = sale.CustomerId;
-                sa.ProductId = sale.ProductId;
+                Customer cust = db.Customers.Where(p => p.Id == customer.Id).SingleOrDefault();
+                cust.Name = customer.Name;
+                cust.Address = customer.Address;
                 db.SaveChanges();
             }
             catch (Exception e)
             {
                 Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Sale Update Failed", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-          
+                return new JsonResult { Data = "Customer Update Failed", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            return new JsonResult { Data = "Success", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 }
