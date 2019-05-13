@@ -1,9 +1,9 @@
 ﻿import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Modal, Button } from 'semantic-ui-react';
-import CustomerCreate from './CustomersCreate.jsx';
-import CustomerDelete from './CustomersDelete.jsx';
-import CustomerUpdate from './CustomersUpdate.jsx';
+import CustomerCreate from './CustomerCreate.jsx';
+import CustomerDelete from './CustomerDelete.jsx';
+import CustomerUpdate from './CustomerUpdate.jsx';
 
 //const app = document.getElementById('customer');
 //ReactDOM.render(<div>Hello World!</div>, app);
@@ -20,9 +20,9 @@ class Table extends Component {
             showDeleteModal: false,
             deleteId: 0,
 
-            CustomersId: '',
-            CustomersName: '',
-            CustomersAddress: '',
+            CustomerId: '',
+            CustomerName: '',
+            CustomerAddress: '',
 
             showUpdateModel: false,
             updateId: 0,
