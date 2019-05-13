@@ -162,21 +162,3 @@ public class SalesController : Controller
 }
         
         
-public JsonResult UpdateSale(ProductSold sale)
-        {
-            try
-            {
-                ProductSold sa = db.ProductSolds.Where(s => s.Id == sale.Id).SingleOrDefault();
-                sa.CustomerId = sale.CustomerId;
-                sa.ProductId = sale.ProductId;
-                sa.StoreId = sale.StoreId;
-                sa.DateSold = sale.DateSold;
-
-                db.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Sale Update Failed", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
-            return new JsonResult { Data = "Success", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
