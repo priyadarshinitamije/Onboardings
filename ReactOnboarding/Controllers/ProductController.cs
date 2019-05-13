@@ -23,9 +23,9 @@ namespace ReactOnboarding.Controllers
             {
                 var productList = db.Products.Select(x => new ProductModel
                 {
-                    ProductId = x.Id,
-                    ProductName = x.Name,
-                    ProductPrice = x.Price,
+                    Id = x.Id,
+                    Name = x.Name,
+                    Price = x.Price,
                 }).ToList();
 
                 return Json(productList, JsonRequestBehavior.AllowGet);
