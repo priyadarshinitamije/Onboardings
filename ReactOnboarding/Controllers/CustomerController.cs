@@ -22,10 +22,9 @@ namespace ReactOnboarding.Controllers
             {
                 var customerList = db.Customers.Select(x => new CustomerModel
                 {
-                    Customers= x.Id,
-                    CustomersId= Id,
-                    CustomersName = x.Name,
-                    CustomersAddress = x.Address,
+                    CustomerId = x.Id,
+                    CustomerName = x.Name,
+                    CustomerAddress = x.Address,
                 }).ToList();
 
                 return Json(customerList, JsonRequestBehavior.AllowGet);
