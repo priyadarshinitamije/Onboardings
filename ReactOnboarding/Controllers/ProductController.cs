@@ -35,6 +35,7 @@ namespace ReactOnboarding.Controllers
             {
                 Console.Write(e.Data + "Exception Occured");
                 return new JsonResult { Data = "Data Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult { Data = "Data Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
