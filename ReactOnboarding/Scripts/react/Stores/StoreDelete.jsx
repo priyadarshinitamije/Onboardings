@@ -12,6 +12,19 @@ export default class StoreDelete extends Component {
         this.onDeleteSubmit = this.onDeleteSubmit.bind(this);
         this.onClose = this.onClose.bind(this);
     }
+    onDeleteSubmit(id) {
+        $.ajax({
+            url: "/Store/DeleteStore",
+            type: "post",
+            data: { 'id': id }
+        });
+        window.location.reload()
+    }
+
+    onClose() {
+        this.setState({ showDeleteModal: false });
+        window.location.reload()
+    }
 
     render() {
 
