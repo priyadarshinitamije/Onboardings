@@ -25,7 +25,7 @@ export default class ProductUpdate extends Component {
                     <Modal.Content>
                         <Form>
                             <Form.Field>
-                                <label>Name</label>
+                                <label>Customer</label>
                                 <input type="text" name="ProductName" placeholder='Name' defaultValue={this.props.Name} onChange={this.props.onChange} />
                                 <div style={{ color: 'red' }}>
                                     {this.props.errors.ProductName}
@@ -39,6 +39,14 @@ export default class ProductUpdate extends Component {
                                 </div>
                             </Form.Field>
                         </Form>
+                        </Modal.Content>
+                    <Modal.Actions>
+                        <Button onClick={this.props.onClose} secondary >Cancel
+                        </Button>
+                        <Button onClick={this.props.onUpdateSubmit} className="ui green button">Edit
+                        <i className="check icon"></i>
+                        </Button>
+                    </Modal.Actions>
                    
                 </Modal>
             </React.Fragment>
