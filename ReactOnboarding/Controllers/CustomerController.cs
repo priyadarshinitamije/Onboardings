@@ -8,35 +8,7 @@ using Newtonsoft.Json;
 
 namespace ReactOnboarding.Controllers
 {
-    public class CustomerController : Controller
-    {
-        DemoProject db = new DemoProject();
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-// GET Products
-        public JsonResult GetCustomerList()
-        {
-            try
-            {
-                var customerList = db.Customers.Select(x => new CustomerModel
-                {
-                    CustomerId = x.Id,
-                    CustomerName = x.Name,
-                    CustomerAddress = x.Address,
-                }).ToList();
-
-                return Json(customerList, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Data Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
-        }
+    
     
         // CREATE Product
         public JsonResult CreateCustomer(Customer customer)
