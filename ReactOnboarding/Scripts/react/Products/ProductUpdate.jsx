@@ -39,14 +39,7 @@ export default class ProductUpdate extends Component {
                                 </div>
                             </Form.Field>
                         </Form>
-                    </Modal.Content>
-                    <Modal.Actions>
-                        <Button onClick={this.props.onClose} secondary >Cancel
-                        </Button>
-                        <Button onClick={this.props.onUpdateSubmit} className="ui green button">Edit
-                        <i className="check icon"></i>
-                        </Button>
-                    </Modal.Actions>
+                   
                 </Modal>
             </React.Fragment>
         )
