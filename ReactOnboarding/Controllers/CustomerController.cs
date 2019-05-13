@@ -37,6 +37,23 @@ namespace ReactOnboarding.Controllers
                 return new JsonResult { Data = "Data Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
+        sing System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace ReactOnboarding.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}
 
         // CREATE Product
         public JsonResult CreateCustomer(Customer customer)
