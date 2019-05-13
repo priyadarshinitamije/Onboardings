@@ -26,8 +26,7 @@ namespace ReactOnboarding.Controllers
                 {
                     Id = x.Id,
                     DateSold = x.DateSold,
-                    CustomerName = x.Customer.Name,
-                    ProductName = x.Product.Name,
+                    
                     StoreName = x.Store.Name,
                 }).ToList();
                 var asdf = Json(salesList, JsonRequestBehavior.AllowGet);
