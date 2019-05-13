@@ -17,20 +17,7 @@ namespace ReactOnboarding.Controllers
             return View();
         }
 
-        // GET Products
-        public JsonResult GetCustomerList()
-        {
-            try
-            {
-                var customerList = db.Customers.Select(x => new CustomerModel
-                {
-                    CustomerId = x.Id,
-                    CustomerName = x.Name,
-                    CustomerAddress = x.Address,
-                }).ToList();
-
-                return Json(customerList, JsonRequestBehavior.AllowGet);
-            }
+        
             catch (Exception e)
             {
                 Console.Write(e.Data + "Exception Occured");
