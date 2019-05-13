@@ -12,13 +12,13 @@ namespace ReactOnboarding.Models
         [Key]
         public int StoreId { get; set; }
 
-        [DisplayName("Store Name")]
+        [DisplayName("Stores Name")]
         [Required(ErrorMessage = "Store Name is required")]
-        [StringLength(20, MinimumLength = 3)]
+        [StringLength(40, MinimumLength = 6)]
         public string StoreName { get; set; }
 
         [Required(ErrorMessage = "Store Address is required")]
-        [StringLength(70)]
+        [StringLength(80)]
         public string StoreAddress { get; set; }
 
         public ICollection<ProductSold> Sales { get; set; }
