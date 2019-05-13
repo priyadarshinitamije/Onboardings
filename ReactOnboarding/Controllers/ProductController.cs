@@ -58,22 +58,7 @@ namespace ReactOnboarding.Controllers
             return new JsonResult { Data = "Success", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-        // CREATE Product
-        public JsonResult CreateProduct(Product product)
-        {
-            try
-            {
-                db.Products.Add(product);
-                db.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Product Create Failed", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
-            return new JsonResult { Data = "Success", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-        }
-
+        
         // UPDATE Product
         public JsonResult GetUpdateProduct(int id)
         {
