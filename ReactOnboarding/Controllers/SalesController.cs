@@ -8,14 +8,7 @@ using Newtonsoft.Json;
 
 namespace ReactOnboarding.Controllers
 {
-    public class SalesController : Controller
-    {
-        DemoProject db = new DemoProject();
-        
-        public ActionResult Index()
-        {
-            return View();
-        }
+    
 
         // GET Products
         public JsonResult GetSalesList()
