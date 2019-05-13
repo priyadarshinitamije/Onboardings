@@ -26,8 +26,7 @@ public class SalesController : Controller
                     Id = x.Id,
                     DateSold = x.DateSold,
                     CustomerName = x.Customer.Name,
-                    ProductName = x.Product.Name,
-                    StoreName = x.Store.Name,
+                    
                 }).ToList();
                 var asdf = Json(salesList, JsonRequestBehavior.AllowGet);
                 return asdf;
@@ -35,7 +34,7 @@ public class SalesController : Controller
             catch (Exception e)
             {
                 Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Data Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult { Data = "Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
@@ -52,17 +51,12 @@ public class SalesController : Controller
                 Console.Write(e.Data + "Exception Occured");
                 return new JsonResult { Data = "Sale Create Failed", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-            return new JsonResult { Data = "Success", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            
         }
 
         public JsonResult GetCustomers()
         {
-            try
-            {
-                var Customerdata = db.Customers.Select(p => new { Id = p.Id, CustomerName = p.Name }).ToList();
-
-                return new JsonResult { Data = Customerdata, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
+            
             catch (Exception e)
             {
                 Console.Write(e.Data + "Exception Occured");
@@ -78,11 +72,7 @@ public class SalesController : Controller
 
                 return new JsonResult { Data = ProductsData, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-            catch (Exception e)
-            {
-                Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Data Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
+            
         }
 
         public JsonResult GetStores()
@@ -93,7 +83,7 @@ public class SalesController : Controller
 
                 return new JsonResult { Data = StoresData, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-            catch (Exception e)
+           
             {
                 Console.Write(e.Data + "Exception Occured");
                 return new JsonResult { Data = "Data Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
@@ -106,7 +96,7 @@ public class SalesController : Controller
             try
             {
                 var sale = db.ProductSolds.Where(s => s.Id == id).SingleOrDefault();
-                if (sale != null)
+               
                 {
                     db.ProductSolds.Remove(sale);
                     db.SaveChanges();
@@ -124,7 +114,7 @@ public class SalesController : Controller
         {
             try
             {
-                ProductSold sale = db.ProductSolds.Where(s => s.Id == id).SingleOrDefault();
+                
                 string value = JsonConvert.SerializeObject(sale, Formatting.Indented, new JsonSerializerSettings
                 {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
@@ -135,7 +125,7 @@ public class SalesController : Controller
             catch (Exception e)
             {
                 Console.Write(e.Data + "Exception Occured");
-                return new JsonResult { Data = "Sale Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult { Data = "Not Found", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
@@ -146,17 +136,13 @@ public class SalesController : Controller
                 ProductSold sa = db.ProductSolds.Where(s => s.Id == sale.Id).SingleOrDefault();
                 sa.CustomerId = sale.CustomerId;
                 sa.ProductId = sale.ProductId;
-                sa.StoreId = sale.StoreId;
-                sa.DateSold = sale.DateSold;
-
                 db.SaveChanges();
             }
             catch (Exception e)
             {
                 Console.Write(e.Data + "Exception Occured");
                 return new JsonResult { Data = "Sale Update Failed", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
-            return new JsonResult { Data = "Success", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+          
         }
     }
 }
