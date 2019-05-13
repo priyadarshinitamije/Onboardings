@@ -10,7 +10,7 @@ namespace ReactOnboarding.Controllers
 {
     public class CustomerController : Controller
     {
-        OnboardingContext db = new OnboardingContext();
+        DemoProject db = new DemoProject();
 
         public ActionResult Index()
         {
