@@ -3,11 +3,7 @@
     context: __dirname,
     entry: {
         Home: "./index.jsx",
-        Customers: "./Customers/CustomerIndex.jsx",
-        Sales: "./Sales/SalesIndex.jsx",
-        Product: "./Products/ProductIndex.jsx",
-        Stores: './Stores/StoreIndex.jsx'
-    },
+        },
     output: {
         path: __dirname + "/dist",
         filename: "[name].bundle.js"
