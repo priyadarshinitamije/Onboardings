@@ -8,6 +8,58 @@ import ProductUpdate from './ProductUpdate.jsx';
 //const app = document.getElementById('product');
 //ReactDOM.render(<div>Hello World!</div>, app);
 
+class Table extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            ProductList: [],
+            Success: { Data: '' },
+
+            showCreateModel: false,
+
+            showDeleteModal: false,
+            deleteId: 0,
+
+            ProductId: '',
+            ProductName: '',
+            ProductPrice: '',
+
+            showUpdateModel: false,
+            updateId: 0,
+
+            Success: [],
+            errors: {}
+        };
+
+        this.loadData = this.loadData.bind(this);
+
+        this.handleDelete = this.handleDelete.bind(this);
+        this.closeDeleteModal = this.closeDeleteModal.bind(this);
+
+        this.showCreateModel = this.showCreateModel.bind(this);
+        this.closeCreateModel = this.closeCreateModel.bind(this);
+        this.onChange = this.onChange.bind(this);
+
+        this.showUpdateModel = this.showUpdateModel.bind(this);
+        this.closeUpdateModel = this.closeUpdateModel.bind(this);
+        this.onUpdateSubmit = this.onUpdateSubmit.bind(this);
+
+    }
+
+    componentDidMount() {
+        this.loadData();
+    }
+
+    //Get products
+    loadData() {
+        $.ajax({
+            url: "/Product/GetProductList",
+            type: "GET",
+            success: function (data) { 
+                this.setState({ ProductList: data })
+            }.bind(this),
+        });
+    }
 
     //Delete    
     handleDelete(id) {
