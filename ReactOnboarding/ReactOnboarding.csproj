@@ -130,10 +130,10 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\react\Customers\CustomersCreate.jsx" />
-    <Content Include="Scripts\react\Customers\CustomersDelete.jsx" />
-    <Content Include="Scripts\react\Customers\CustomersIndex.jsx" />
-    <Content Include="Scripts\react\Customers\CustomersUpdate.jsx" />
+    <Content Include="Scripts\react\Customers\CustomerCreate.jsx" />
+    <Content Include="Scripts\react\Customers\CustomerDelete.jsx" />
+    <Content Include="Scripts\react\Customers\CustomerIndex.jsx" />
+    <Content Include="Scripts\react\Customers\CustomerUpdate.jsx" />
     <Content Include="Scripts\react\dist\Customers.bundle.js" />
     <Content Include="Scripts\react\dist\Home.bundle.js" />
     <Content Include="Scripts\react\dist\Product.bundle.js" />
