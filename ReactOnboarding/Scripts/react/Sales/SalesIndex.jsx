@@ -1,9 +1,9 @@
-﻿import React, { Component } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Modal, Button } from 'semantic-ui-react';
-import SaleCreate from './SaleCreate.jsx';
-import SaleDelete from './SaleDelete.jsx';
-import SaleUpdate from './SaleUpdate.jsx';
+import SaleCreate from './SalesCreate.jsx';
+import SaleDelete from './SalesDelete.jsx';
+import SaleUpdate from './SalesUpdate.jsx';
 
 //const app = document.getElementById('sales');
 //ReactDOM.render(<div>Hello World!</div>, app);
@@ -201,9 +201,9 @@ class Table extends Component {
         if (list != "") {
             tableData = list.map(sale =>
                 <tr key={sale.Id}>
-                    <td className="two wide">{sale.CustomersName}</td>
-                    <td className="two wide">{sale.ProductsName}</td>
-                    <td className="two wide">{sale.StoresName}</td>
+                    <td className="two wide">{sale.CustomerName}</td>
+                    <td className="two wide">{sale.ProductName}</td>
+                    <td className="two wide">{sale.StoreName}</td>
                     <td className="two wide">{this.TableDateForm(sale.DateSold)}</td>
 
                     <td className="four wide">
