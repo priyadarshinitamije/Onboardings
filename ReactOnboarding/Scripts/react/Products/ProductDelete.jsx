@@ -13,13 +13,7 @@ export default class ProductDelete extends Component {
         this.onClose = this.onClose.bind(this);
     }
 
-    onDeleteSubmit(id) {
-        $.ajax({
-            url: "/Product/DeleteProduct",
-            type: "post",
-            data: { 'id': id }
-        });
-        window.location.reload()
+    window.location.reload()
     }
 
     onClose() {
