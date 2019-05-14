@@ -11,6 +11,10 @@ export default class CustomerUpdate extends Component {
 
         this.onClose = this.onClose.bind(this);
     }
+     onClose() {
+        this.setState({ showUpdateModel: false });
+        window.location.reload()
+    }
 render() {
         return (
             <React.Fragment>
