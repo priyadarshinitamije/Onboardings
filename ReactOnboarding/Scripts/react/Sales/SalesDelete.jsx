@@ -15,7 +15,7 @@ export default class SaleDelete extends Component {
 
     onDeleteSubmit(id) {
         $.ajax({
-            url: "/Sale/DeleteSale",
+            url: "/Sales/DeleteSale",
             type: "post",
             data: { 'id': id }
         });
@@ -35,11 +35,11 @@ export default class SaleDelete extends Component {
                     <Modal.Header>Delete Sales</Modal.Header>
                     <Modal.Content>
                         <h4>
-                            sure?
+                            Are you sure?
                         </h4>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button onClick={this.props.onClose} secondary >Delete
+                        <Button onClick={this.props.onClose} secondary >Cancel
                             </Button>
                         <Button onClick={() => this.onDeleteSubmit(this.props.delete)} className="ui red button">Delete
                             <i className="x icon"></i>
